@@ -1,0 +1,52 @@
+public class Pessoa {
+    private String nome;
+    private String sobrenome;
+
+    // Construtor sem parâmetros
+    public Pessoa() {
+        this.nome = "";
+        this.sobrenome = "";
+    }
+
+    // Construtor com parâmetros
+    public Pessoa(String nome, String sobrenome) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
+
+    // Método get para o atributo nome
+    public String getNome() {
+        return nome;
+    }
+
+    // Método set para o atributo nome
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    // Método get para o atributo sobrenome
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    // Método set para o atributo sobrenome
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    // Método para obter o nome completo
+    public String getNomeCompleto() {
+        return nome + " " + sobrenome;
+    }
+
+    public static void main(String[] args) {
+        // Teste da classe Pessoa
+        Pessoa pessoa1 = new Pessoa();
+        pessoa1.setNome("João");
+        pessoa1.setSobrenome("Silva");
+        System.out.println("Nome Completo: " + pessoa1.getNomeCompleto()); // João Silva
+
+        Pessoa pessoa2 = new Pessoa("Maria", "Oliveira");
+        System.out.println("Nome Completo: " + pessoa2.getNomeCompleto()); // Maria Oliveira
+    }
+}
