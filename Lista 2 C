@@ -1,0 +1,44 @@
+public class Professor extends Funcionario {
+
+    // Construtor sem parâmetros
+    public Professor() {
+        super();
+    }
+
+    // Construtor com parâmetros
+    public Professor(String nome, String sobrenome, int matricula, double salario) {
+        super(nome, sobrenome, matricula, salario);
+    }
+
+    // Sobrescreve o método getSalarioPrimeiraParcela para retornar o salário completo
+    @Override
+    public double getSalarioPrimeiraParcela() {
+        return getSalario();
+    }
+
+    // Sobrescreve o método getSalarioSegundaParcela para retornar zero
+    @Override
+    public double getSalarioSegundaParcela() {
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        // Teste da classe Professor
+        Professor professor = new Professor("Carlos", "Fernandes", 67890, 6000.00);
+
+        System.out.println("Nome Completo: " + professor.getNomeCompleto());
+        System.out.println("Matrícula: " + professor.getMatricula());
+        System.out.println("Salário: " + professor.getSalario());
+        System.out.println("Primeira Parcela: " + professor.getSalarioPrimeiraParcela()); // Salário integral
+        System.out.println("Segunda Parcela: " + professor.getSalarioSegundaParcela()); // Zero
+
+        // Testando a classe Funcionario também para referência
+        Funcionario funcionario = new Funcionario("Ana", "Pereira", 12345, 5000.00);
+        System.out.println("\nTestando Funcionario:");
+        System.out.println("Nome Completo: " + funcionario.getNomeCompleto());
+        System.out.println("Matrícula: " + funcionario.getMatricula());
+        System.out.println("Salário: " + funcionario.getSalario());
+        System.out.println("Primeira Parcela: " + funcionario.getSalarioPrimeiraParcela()); // 60% do salário
+        System.out.println("Segunda Parcela: " + funcionario.getSalarioSegundaParcela()); // 40% do salário
+    }
+}
