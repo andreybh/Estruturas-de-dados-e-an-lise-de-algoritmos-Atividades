@@ -1,0 +1,69 @@
+public class Funcionario extends Pessoa {
+    private int matricula;
+    private double salario;
+
+    // Construtor sem parâmetros
+    public Funcionario() {
+        super();
+        this.matricula = 0;
+        this.salario = 0.0;
+    }
+
+    // Construtor com parâmetros
+    public Funcionario(String nome, String sobrenome, int matricula, double salario) {
+        super(nome, sobrenome);
+        this.matricula = matricula;
+        setSalario(salario); // Usa o setSalario para garantir que o salário não seja negativo
+    }
+
+    // Método get para o atributo matrícula
+    public int getMatricula() {
+        return matricula;
+    }
+
+    // Método set para o atributo matrícula
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    // Método get para o atributo salário
+    public double getSalario() {
+        return salario;
+    }
+
+    // Método set para o atributo salário
+    public void setSalario(double salario) {
+        if (salario < 0) {
+            throw new IllegalArgumentException("O salário não pode ser negativo.");
+        }
+        this.salario = salario;
+    }
+
+    // Método para obter a primeira parcela do salário (60%)
+    public double getSalarioPrimeiraParcela() {
+        return salario * 0.60;
+    }
+
+    // Método para obter a segunda parcela do salário (40%)
+    public double getSalarioSegundaParcela() {
+        return salario * 0.40;
+    }
+
+    public static void main(String[] args) {
+        // Teste da classe Funcionario
+        Funcionario funcionario = new Funcionario("Ana", "Pereira", 12345, 5000.00);
+        
+        System.out.println("Nome Completo: " + funcionario.getNomeCompleto());
+        System.out.println("Matrícula: " + funcionario.getMatricula());
+        System.out.println("Salário: " + funcionario.getSalario());
+        System.out.println("Primeira Parcela: " + funcionario.getSalarioPrimeiraParcela());
+        System.out.println("Segunda Parcela: " + funcionario.getSalarioSegundaParcela());
+
+        // Testando o tratamento de salário negativo
+        try {
+            funcionario.setSalario(-1000.00); // Deve lançar uma exceção
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage()); // "O salário não pode ser negativo."
+        }
+    }
+}
